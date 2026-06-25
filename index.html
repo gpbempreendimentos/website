@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="GPB Empreendimentos Digitais – Marketing direto, comunicação digital e soluções em tecnologia para o seu negócio crescer." />
+  <meta name="keywords" content="marketing digital, comunicação, WhatsApp Business, automação, GPB, Maringá" />
+  <meta property="og:title" content="GPB Empreendimentos Digitais" />
+  <meta property="og:description" content="Marketing direto, tecnologia e comunicação digital para empresas." />
+  <meta property="og:type" content="website" />
+  <title>GPB Empreendimentos Digitais</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── TOKENS ── */
+    :root {
+      --c-bg:       #0a0f1e;
+      --c-surface:  #111827;
+      --c-border:   #1e2d45;
+      --c-accent:   #0ea5e9;
+      --c-accent2:  #38bdf8;
+      --c-text:     #e2e8f0;
+      --c-muted:    #64748b;
+      --c-white:    #ffffff;
+      --f-display:  'Space Grotesk', sans-serif;
+      --f-body:     'Inter', sans-serif;
+      --radius:     12px;
+      --max:        1100px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--c-bg);
+      color: var(--c-text);
+      font-family: var(--f-body);
+      font-size: 16px;
+      line-height: 1.65;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; }
+
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(10, 15, 30, 0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--c-border);
+    }
+
+    .nav-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: var(--f-display);
+      font-weight: 700;
+      font-size: 1.2rem;
+      letter-spacing: -0.02em;
+      color: var(--c-white);
+    }
+
+    .nav-logo span { color: var(--c-accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--c-muted);
+      transition: color .2s;
+    }
+
+    .nav-links a:hover { color: var(--c-white); }
+
+    .nav-cta {
+      background: var(--c-accent);
+      color: var(--c-bg) !important;
+      padding: 8px 20px;
+      border-radius: 6px;
+      font-weight: 600 !important;
+      transition: background .2s !important;
+    }
+
+    .nav-cta:hover { background: var(--c-accent2) !important; color: var(--c-bg) !important; }
+
+    /* ── HERO ── */
+    #inicio {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 64px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(14, 165, 233, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(14, 165, 233, 0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .hero-glow {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(14,165,233,0.12) 0%, transparent 70%);
+      top: -100px;
+      right: -100px;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(14,165,233,0.1);
+      border: 1px solid rgba(14,165,233,0.3);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--c-accent);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--c-accent);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    h1 {
+      font-family: var(--f-display);
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: var(--c-white);
+      margin-bottom: 24px;
+    }
+
+    h1 em {
+      font-style: normal;
+      color: var(--c-accent);
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--c-muted);
+      max-width: 520px;
+      margin-bottom: 40px;
+      font-weight: 300;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--c-accent);
+      color: var(--c-bg);
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: background .2s, transform .15s;
+    }
+
+    .btn-primary:hover {
+      background: var(--c-accent2);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--c-border);
+      color: var(--c-text);
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: border-color .2s, color .2s;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--c-accent);
+      color: var(--c-accent);
+    }
+
+    /* ── SECTION BASE ── */
+    section { padding: 96px 0; }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--c-accent);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: var(--f-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      color: var(--c-white);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      font-size: 1rem;
+      color: var(--c-muted);
+      max-width: 520px;
+      font-weight: 300;
+    }
+
+    .section-head { margin-bottom: 56px; }
+
+    /* ── DIVIDER ── */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--c-border);
+    }
+
+    /* ── SOBRE ── */
+    #sobre { background: var(--c-surface); }
+
+    .sobre-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .sobre-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .stat-card {
+      background: var(--c-bg);
+      border: 1px solid var(--c-border);
+      border-radius: var(--radius);
+      padding: 28px;
+    }
+
+    .stat-number {
+      font-family: var(--f-display);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--c-accent);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      font-size: 0.82rem;
+      color: var(--c-muted);
+      font-weight: 400;
+    }
+
+    .sobre-text p {
+      color: var(--c-muted);
+      margin-bottom: 16px;
+      font-weight: 300;
+    }
+
+    .sobre-cnpj {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 8px;
+      font-size: 0.8rem;
+      color: var(--c-muted);
+      background: var(--c-bg);
+      border: 1px solid var(--c-border);
+      border-radius: 6px;
+      padding: 6px 12px;
+    }
+
+    .sobre-cnpj strong { color: var(--c-text); }
+
+    /* ── SERVIÇOS ── */
+    #servicos { background: var(--c-bg); }
+
+    .servicos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .servico-card {
+      background: var(--c-surface);
+      border: 1px solid var(--c-border);
+      border-radius: var(--radius);
+      padding: 36px 32px;
+      transition: border-color .2s, transform .2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .servico-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--c-accent), transparent);
+      opacity: 0;
+      transition: opacity .2s;
+    }
+
+    .servico-card:hover {
+      border-color: rgba(14,165,233,0.4);
+      transform: translateY(-4px);
+    }
+
+    .servico-card:hover::before { opacity: 1; }
+
+    .servico-icon {
+      width: 48px; height: 48px;
+      background: rgba(14,165,233,0.1);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 1.4rem;
+    }
+
+    .servico-card h3 {
+      font-family: var(--f-display);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--c-white);
+      margin-bottom: 10px;
+    }
+
+    .servico-card p {
+      font-size: 0.9rem;
+      color: var(--c-muted);
+      font-weight: 300;
+    }
+
+    /* ── CONTATO ── */
+    #contato { background: var(--c-surface); }
+
+    .contato-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .contato-info { display: flex; flex-direction: column; gap: 20px; }
+
+    .contato-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 20px;
+      background: var(--c-bg);
+      border: 1px solid var(--c-border);
+      border-radius: var(--radius);
+    }
+
+    .contato-item-icon {
+      width: 40px; height: 40px;
+      background: rgba(14,165,233,0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .contato-item-text strong {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--c-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .contato-item-text a,
+    .contato-item-text span {
+      color: var(--c-text);
+      font-size: 0.95rem;
+      transition: color .2s;
+    }
+
+    .contato-item-text a:hover { color: var(--c-accent); }
+
+    .contato-form { display: flex; flex-direction: column; gap: 16px; }
+
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+
+    .form-group label {
+      font-size: 0.82rem;
+      color: var(--c-muted);
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      background: var(--c-bg);
+      border: 1px solid var(--c-border);
+      border-radius: 8px;
+      padding: 12px 16px;
+      color: var(--c-white);
+      font-family: var(--f-body);
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color .2s;
+      resize: vertical;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--c-accent);
+    }
+
+    .form-group textarea { min-height: 120px; }
+
+    .btn-form {
+      background: var(--c-accent);
+      color: var(--c-bg);
+      border: none;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      font-family: var(--f-body);
+      transition: background .2s;
+    }
+
+    .btn-form:hover { background: var(--c-accent2); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--c-bg);
+      border-top: 1px solid var(--c-border);
+      padding: 48px 0 32px;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+    }
+
+    .footer-brand p {
+      font-size: 0.875rem;
+      color: var(--c-muted);
+      margin-top: 12px;
+      font-weight: 300;
+      max-width: 280px;
+    }
+
+    .footer-col h4 {
+      font-family: var(--f-display);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--c-white);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+    .footer-col ul a {
+      font-size: 0.875rem;
+      color: var(--c-muted);
+      transition: color .2s;
+    }
+
+    .footer-col ul a:hover { color: var(--c-accent); }
+
+    .footer-bottom {
+      border-top: 1px solid var(--c-border);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-bottom p {
+      font-size: 0.8rem;
+      color: var(--c-muted);
+    }
+
+    .footer-legal { display: flex; gap: 24px; }
+
+    .footer-legal a {
+      font-size: 0.8rem;
+      color: var(--c-muted);
+      transition: color .2s;
+    }
+
+    .footer-legal a:hover { color: var(--c-text); }
+
+    /* ── MODAL LEGAL ── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(6px);
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .modal-overlay.open { display: flex; }
+
+    .modal-box {
+      background: var(--c-surface);
+      border: 1px solid var(--c-border);
+      border-radius: 16px;
+      max-width: 680px;
+      width: 100%;
+      max-height: 80vh;
+      overflow-y: auto;
+      padding: 40px;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 24px;
+    }
+
+    .modal-header h2 {
+      font-family: var(--f-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--c-white);
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      color: var(--c-muted);
+      font-size: 1.4rem;
+      cursor: pointer;
+      padding: 4px;
+      line-height: 1;
+    }
+
+    .modal-close:hover { color: var(--c-white); }
+
+    .modal-body h3 {
+      font-family: var(--f-display);
+      font-size: 1rem;
+      color: var(--c-accent);
+      margin: 24px 0 8px;
+    }
+
+    .modal-body p, .modal-body li {
+      font-size: 0.9rem;
+      color: var(--c-muted);
+      font-weight: 300;
+    }
+
+    .modal-body ul { padding-left: 20px; margin-top: 8px; }
+    .modal-body li { margin-bottom: 6px; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+
+      .sobre-grid,
+      .contato-grid,
+      .footer-top { grid-template-columns: 1fr; gap: 40px; }
+
+      .sobre-stats { grid-template-columns: 1fr 1fr; }
+
+      .footer-top { grid-template-columns: 1fr; }
+
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+
+      section { padding: 72px 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#inicio" class="nav-logo">GPB <span>Digitais</span></a>
+    <ul class="nav-links">
+      <li><a href="#inicio">Início</a></li>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#contato" class="nav-cta">Falar conosco</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="inicio">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">Empresa Ativa · CNPJ 53.076.976/0001-04</div>
+      <h1>Comunicação e marketing que <em>geram resultado</em></h1>
+      <p class="hero-sub">
+        Somos a GPB Empreendimentos Digitais — especialistas em marketing direto, automação de comunicação e presença digital para empresas que querem crescer de forma consistente.
+      </p>
+      <div class="hero-actions">
+        <a href="#contato" class="btn-primary">
+          💬 Falar conosco
+        </a>
+        <a href="#servicos" class="btn-ghost">
+          Ver serviços →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="container">
+    <div class="sobre-grid">
+      <div class="sobre-text">
+        <div class="section-label">Sobre a empresa</div>
+        <h2 class="section-title">Quem é a GPB Empreendimentos Digitais?</h2>
+        <p>
+          Fundada em dezembro de 2023, a GPB Empreendimentos Digitais é uma microempresa sediada em Maringá – PR, com foco em soluções de marketing direto, comunicação digital e intermediação de serviços para negócios em geral.
+        </p>
+        <p>
+          Atuamos com propósito: ajudar empresas a se comunicarem melhor com seus clientes, automatizarem processos e construírem uma presença digital sólida e profissional.
+        </p>
+        <p>
+          Nosso time une experiência em tecnologia e comunicação para entregar resultados reais, com agilidade e transparência.
+        </p>
+        <div class="sobre-cnpj">
+          🏛️ CNPJ <strong>53.076.976/0001-04</strong> &nbsp;·&nbsp; Situação: <strong style="color:#22c55e">Ativa</strong>
+        </div>
+      </div>
+      <div class="sobre-stats">
+        <div class="stat-card">
+          <div class="stat-number">2023</div>
+          <div class="stat-label">Fundação da empresa</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">5+</div>
+          <div class="stat-label">CNAEs ativos</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">ME</div>
+          <div class="stat-label">Microempresa registrada</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">PR</div>
+          <div class="stat-label">Maringá, Paraná</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section id="servicos">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">O que fazemos</div>
+      <h2 class="section-title">Soluções digitais completas</h2>
+      <p class="section-sub">Do marketing à comunicação automatizada — tudo que sua empresa precisa para se destacar online.</p>
+    </div>
+    <div class="servicos-grid">
+
+      <div class="servico-card">
+        <div class="servico-icon">📣</div>
+        <h3>Marketing Direto</h3>
+        <p>Estratégias personalizadas de comunicação para conectar sua marca ao público certo, no momento certo, com o canal mais eficiente.</p>
+      </div>
+
+      <div class="servico-card">
+        <div class="servico-icon">🤖</div>
+        <h3>Automação via WhatsApp</h3>
+        <p>Implementação e configuração da WhatsApp Business Platform (API Oficial) para escalar o atendimento e a comunicação da sua empresa com segurança.</p>
+      </div>
+
+      <div class="servico-card">
+        <div class="servico-icon">📊</div>
+        <h3>Promoção de Vendas</h3>
+        <p>Campanhas e ações comerciais que aumentam o engajamento do cliente e impulsionam suas conversões de forma mensurável.</p>
+      </div>
+
+      <div class="servico-card">
+        <div class="servico-icon">🌐</div>
+        <h3>Presença Digital</h3>
+        <p>Criação e gestão de conteúdo, sites institucionais e portais para garantir que sua empresa seja encontrada e transmita credibilidade online.</p>
+      </div>
+
+      <div class="servico-card">
+        <div class="servico-icon">🔗</div>
+        <h3>Intermediação de Negócios</h3>
+        <p>Conectamos empresas a serviços, fornecedores e parceiros estratégicos para acelerar processos e reduzir custos operacionais.</p>
+      </div>
+
+      <div class="servico-card">
+        <div class="servico-icon">🎓</div>
+        <h3>Treinamento Profissional</h3>
+        <p>Capacitação em marketing digital, comunicação e ferramentas tecnológicas para equipes que querem evoluir com o mercado.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">Contato</div>
+      <h2 class="section-title">Vamos conversar?</h2>
+      <p class="section-sub">Estamos prontos para entender sua necessidade e propor a melhor solução.</p>
+    </div>
+    <div class="contato-grid">
+      <div class="contato-info">
+
+        <div class="contato-item">
+          <div class="contato-item-icon">📱</div>
+          <div class="contato-item-text">
+            <strong>WhatsApp / Telefone</strong>
+            <a href="https://wa.me/5511992585164" target="_blank" rel="noopener">(11) 99258-5164</a>
+          </div>
+        </div>
+
+        <div class="contato-item">
+          <div class="contato-item-icon">📧</div>
+          <div class="contato-item-text">
+            <strong>E-mail</strong>
+            <a href="mailto:gpbempreendimentos@gmail.com">gpbempreendimentos@gmail.com</a>
+          </div>
+        </div>
+
+        <div class="contato-item">
+          <div class="contato-item-icon">📍</div>
+          <div class="contato-item-text">
+            <strong>Endereço</strong>
+            <span>Av. Dr. Alexandre Rasgulaeff, 4370 – Box 361<br>Jardim Imperial II, Maringá – PR<br>CEP 87.023-060</span>
+          </div>
+        </div>
+
+        <div class="contato-item">
+          <div class="contato-item-icon">🕐</div>
+          <div class="contato-item-text">
+            <strong>Horário de atendimento</strong>
+            <span>Segunda a Sexta, das 9h às 18h</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="contato-form">
+        <div class="form-group">
+          <label for="nome">Seu nome</label>
+          <input type="text" id="nome" placeholder="Ex: João Silva" />
+        </div>
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" placeholder="seuemail@exemplo.com" />
+        </div>
+        <div class="form-group">
+          <label for="assunto">Assunto</label>
+          <input type="text" id="assunto" placeholder="Em que podemos ajudar?" />
+        </div>
+        <div class="form-group">
+          <label for="mensagem">Mensagem</label>
+          <textarea id="mensagem" placeholder="Descreva sua necessidade..."></textarea>
+        </div>
+        <button class="btn-form" onclick="enviarFormulario()">Enviar mensagem →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="nav-logo">GPB <span style="color:var(--c-accent)">Digitais</span></div>
+          <p>GPB Empreendimentos Digitais LTDA<br>CNPJ 53.076.976/0001-04<br>Maringá – PR</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navegação</h4>
+          <ul>
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="#contato">Contato</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#" onclick="abrirModal('privacidade'); return false;">Política de Privacidade</a></li>
+            <li><a href="#" onclick="abrirModal('termos'); return false;">Termos de Uso</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2024 GPB Empreendimentos Digitais LTDA. Todos os direitos reservados.</p>
+        <div class="footer-legal">
+          <a href="#" onclick="abrirModal('privacidade'); return false;">Privacidade</a>
+          <a href="#" onclick="abrirModal('termos'); return false;">Termos</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL PRIVACIDADE -->
+<div class="modal-overlay" id="modal-privacidade">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h2>Política de Privacidade</h2>
+      <button class="modal-close" onclick="fecharModal('privacidade')">✕</button>
+    </div>
+    <div class="modal-body">
+      <p>Última atualização: Janeiro de 2024</p>
+      <h3>1. Informações que coletamos</h3>
+      <p>A GPB Empreendimentos Digitais LTDA coleta apenas as informações fornecidas voluntariamente pelo usuário por meio do formulário de contato, como nome, e-mail e mensagem.</p>
+      <h3>2. Uso das informações</h3>
+      <p>As informações coletadas são utilizadas exclusivamente para:</p>
+      <ul>
+        <li>Responder às mensagens e solicitações de contato;</li>
+        <li>Enviar propostas ou informações comerciais solicitadas;</li>
+        <li>Melhoria contínua dos nossos serviços.</li>
+      </ul>
+      <h3>3. Compartilhamento de dados</h3>
+      <p>Não comercializamos, alugamos ou compartilhamos seus dados pessoais com terceiros, exceto quando exigido por lei ou por autoridade competente.</p>
+      <h3>4. Segurança</h3>
+      <p>Adotamos medidas técnicas e organizacionais adequadas para proteger suas informações contra acessos não autorizados, perda ou divulgação indevida.</p>
+      <h3>5. Seus direitos (LGPD)</h3>
+      <p>Em conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018), você tem o direito de solicitar acesso, correção, portabilidade ou exclusão dos seus dados a qualquer momento pelo e-mail: gpbempreendimentos@gmail.com.</p>
+      <h3>6. Contato</h3>
+      <p>Dúvidas sobre esta política? Entre em contato: gpbempreendimentos@gmail.com</p>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL TERMOS -->
+<div class="modal-overlay" id="modal-termos">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h2>Termos de Uso</h2>
+      <button class="modal-close" onclick="fecharModal('termos')">✕</button>
+    </div>
+    <div class="modal-body">
+      <p>Última atualização: Janeiro de 2024</p>
+      <h3>1. Aceitação dos termos</h3>
+      <p>Ao acessar e utilizar o site da GPB Empreendimentos Digitais LTDA, você concorda com os presentes Termos de Uso. Caso não concorde, por favor, não utilize este site.</p>
+      <h3>2. Sobre o site</h3>
+      <p>Este site tem caráter exclusivamente institucional e informativo. As informações aqui contidas estão sujeitas a alterações sem aviso prévio.</p>
+      <h3>3. Propriedade intelectual</h3>
+      <p>Todo o conteúdo deste site — textos, imagens, layout e logotipo — é de propriedade da GPB Empreendimentos Digitais LTDA e está protegido pela legislação brasileira de propriedade intelectual. É vedada a reprodução sem autorização prévia.</p>
+      <h3>4. Limitação de responsabilidade</h3>
+      <p>A GPB Empreendimentos Digitais não se responsabiliza por danos decorrentes do uso ou impossibilidade de uso deste site, incluindo interrupções temporárias de acesso.</p>
+      <h3>5. Links externos</h3>
+      <p>Este site pode conter links para sites de terceiros. A GPB não controla nem se responsabiliza pelo conteúdo desses sites.</p>
+      <h3>6. Legislação aplicável</h3>
+      <p>Estes termos são regidos pelas leis da República Federativa do Brasil. Qualquer litígio será submetido ao foro da Comarca de Maringá – PR.</p>
+      <h3>7. Contato</h3>
+      <p>Dúvidas: gpbempreendimentos@gmail.com</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  function abrirModal(id) {
+    document.getElementById('modal-' + id).classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function fecharModal(id) {
+    document.getElementById('modal-' + id).classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Fechar ao clicar fora
+  document.querySelectorAll('.modal-overlay').forEach(el => {
+    el.addEventListener('click', function(e) {
+      if (e.target === this) {
+        this.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    });
+  });
+
+  // Formulário → redireciona para WhatsApp
+  function enviarFormulario() {
+    const nome = document.getElementById('nome').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const assunto = document.getElementById('assunto').value.trim();
+    const mensagem = document.getElementById('mensagem').value.trim();
+
+    if (!nome || !mensagem) {
+      alert('Por favor, preencha ao menos seu nome e a mensagem.');
+      return;
+    }
+
+    const texto = `Olá! Meu nome é *${nome}*.\n\n*E-mail:* ${email}\n*Assunto:* ${assunto}\n\n${mensagem}`;
+    const encoded = encodeURIComponent(texto);
+    window.open(`https://wa.me/5511992585164?text=${encoded}`, '_blank');
+  }
+</script>
+
+</body>
+</html>
